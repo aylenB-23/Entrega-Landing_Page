@@ -1,0 +1,1436 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+@charset "UTF-8";
+* {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0px;
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+/*FONTS*/
+  
+  .montserrat {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+  }
+
+
+  .archivo{
+  font-family: "Archivo", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+  }
+  @media (max-width: 875px) {
+    .version .section-3 {
+      background-position: center center;
+    }
+  }
+  @media (max-width: 600px) {
+    .version .section-3 {
+      background-position: 45% center;
+    }
+  }
+
+/*HEADER*/
+ .version .header {
+  height: 80px; /* Un poco más alto para dar aire al diseño */
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Separa el logo a la izquierda y el menú al centro */
+  padding: 0 50px;
+  box-sizing: border-box;
+  transition: background-color 0.4s ease, transform 0.3s ease-in-out, box-shadow 0.4s ease;
+  transform: translateY(0);
+  }
+
+  .version .header.header-hidden {
+    transform: translateY(-100%); /* Lo saca hacia arriba de la pantalla */
+  }
+
+  /* --- LOGO --- */
+  .version .logo {
+    width: 50px;
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  /* --- CONTENEDOR REDONDEADO DEL MENÚ (Mesa de botones) --- */
+  .version .buttons-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    background-color: rgba(223, 229, 229, 0);
+    backdrop-filter: blur(10px);/* Gris claro translúcido *//* Efecto difuminado moderno */
+    -webkit-backdrop-filter: blur(10px); /* Soporte para Safari */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+    border: 1px solid rgba(0, 196, 167, 0.2); 
+    padding: 8px 24px;
+    border-radius: 50px; 
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .version .buttons-group.header-scrolled {
+  background-color: #DFE5E5; 
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Sombra para despegarlo del fondo */
+  }
+
+  .version .menu-item {
+    position: relative;
+    color: #1A1A1A; /* Texto oscuro para fondo claro */
+    font-family: "Archivo", Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    padding: 6px 0;
+  }
+
+  .version .menu-item::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px; /* Grosor de la línea turquesa */
+    background-color: #00c4a7; /* Turquesa institucional */
+    transform: scaleX(0); /* Invisible al inicio */
+    transform-origin: bottom left;
+    transition: transform 0.3s ease-in-out; /* Animación fluida de expansión */
+  }
+
+  /* --- EFECTO HOVER: Solo despliega la línea --- */
+  .version .menu-item:hover::after {
+    transform: scaleX(1); /* La línea se expande al pasar el mouse */
+  }
+
+  /* --- ESTADO ACTIVO (SCROLL): Solo despliega la línea --- */
+  .version .menu-item.active-menu::after {
+    transform: scaleX(1); /* La línea se queda fija si estás en la sección */
+  }
+    
+  /* --- BOTÓN HAMBURGUESA (MÓVIL) --- */
+  .version .hamburger-btn {
+    display: none;
+  }
+
+  /* --- MENÚ MÓVIL OVERLAY --- */
+  .mobile-menu-overlay {
+    position: fixed;
+      top: 0;
+      right: 0;
+      width: 80%;
+      height: 100vh;
+      background-color: rgba(23, 23, 23, 0.98); 
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      z-index: 9999;
+      transform: translateX(100%); 
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.25);
+  }
+
+  .mobile-menu-overlay.active {
+    transform: translateX(0);
+  }
+
+  .menu-content {
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Botón de cerrar "X" ultra minimalista */
+  .close-btn {
+    align-self: flex-end;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 38px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 10px;
+    margin-bottom: 40px;
+    transition: transform 0.2s ease;
+  }
+  .close-btn:active {
+    transform: scale(0.85);
+  }
+
+  /* Contenedor del menú centrado verticalmente */
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    gap: 24px;
+  }
+
+  /* Estilos de los links en móvil con animación individual */
+  .mobile-nav .menu-item {
+    display: block;
+    color: #ffffff;
+    font-family: "Archivo", sans-serif;
+    font-size: 24px; /* Texto grande e impactante */
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    
+    /* Estado inicial antes de abrir el menú */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Cuando el menú se activa, los links se revelan con un leve retardo en cadena */
+  .mobile-menu-overlay.active .mobile-nav .menu-item {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Retrasos controlados (efecto cascada) */
+  .mobile-menu-overlay.active .mobile-nav .menu-item:nth-child(1) { transition-delay: 0.15s; }
+  .mobile-menu-overlay.active .mobile-nav .menu-item:nth-child(2) { transition-delay: 0.22s; }
+  .mobile-menu-overlay.active .mobile-nav .menu-item:nth-child(3) { transition-delay: 0.29s; }
+  .mobile-menu-overlay.active .mobile-nav .menu-item:nth-child(4) { transition-delay: 0.36s; }
+  .mobile-menu-overlay.active .mobile-nav .menu-item:nth-child(5) { transition-delay: 0.43s; }
+
+/*HERO*/
+  .hero {
+  min-height: 100vh; /* Ocupa todo el alto de la pantalla */
+  width: 100%;
+
+  background-image: url("../img/hero.png"); /* Tu imagen con fondo claro y la bici a la derecha */
+  background-size: cover;
+  background-position: bottom right; /* Prioriza que la bici se acomode a la derecha */
+  display: flex;
+  align-items: center;
+  padding: 0 5%; /* Margen dinámico a los lados */
+  box-sizing: border-box;
+ /* Evita que el header fixed tape el contenido */
+  }
+
+  .hero-content {
+    max-width: 550px; /* Limita el ancho del texto para que no pise la bicicleta */
+  }
+
+  .hero h1 {
+    margin: 0 0 20px 0;
+    color: #1A1A1A; /* Color oscuro idéntico a la imagen */
+    font-size: 60px;
+    line-height: 1.1;
+    font-weight: 800;
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+  }
+
+  .hero p {
+    margin: 0 0 40px 0;
+    color: #656565; /* Gris suave para la descripción */
+    font-size: 24px;
+    line-height: 1.4;
+    font-weight: 400;
+    font-family: "Archivo", sans-serif;
+  }
+
+  .hero .hero-button {
+  position: relative; /* Necesario para contener el efecto de fondo */
+  display: inline-block;
+  background: #00c4a7; /* Turquesa Tern de base */
+  color: #1A1A1A; /* Texto oscuro inicial */
+  text-decoration: none;
+  font-family: "Archivo", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 16px 40px;
+  border-radius: 50px; /* Bordes perfectamente ovalados */
+  overflow: hidden; /* Oculta el relleno antes de que se deslice */
+  z-index: 1; /* Mantiene el botón por encima del fondo */
+  
+  /* Sombra suave inicial de profundidad */
+  box-shadow: 0 10px 25px rgba(0, 196, 167, 0.2);
+  
+  /* Transición fluida para todas las propiedades */
+  transition: color 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+              transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+              box-shadow 0.3s ease;
+  }
+
+  /* --- LA CAPA EFECTO DE DESLIZAMIENTO (Oculta a la izquierda) --- */
+  .hero .hero-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #171717; /* El tono oscuro elegante del diseño */
+    border-radius: 50px;
+    z-index: -1; /* Se posiciona detrás del texto */
+    
+    /* Lo mandamos fuera del botón hacia la izquierda y lo deformamos ligeramente */
+    transform: scaleX(0);
+    transform-origin: left center;
+    
+    /* Animación de aceleración moderna (Cubic-Bezier) */
+    transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  /* --- ESTADO HOVER (MODERNO) --- */
+  .hero .hero-button:hover {
+    color: #ffffff; /* El texto pasa a blanco para contrastar con el fondo oscuro */
+    transform: translateY(-4px); /* Se eleva con elegancia */
+    
+    /* La sombra cambia de color y se expande para dar efecto de flotación */
+    box-shadow: 0 15px 30px rgba(23, 23, 23, 0.25);
+  }
+
+  /* Al hacer hover, activamos el desplazamiento del fondo hacia la derecha */
+  .hero .hero-button:hover::before {
+    transform: scaleX(1); /* Se expande cubriendo todo el ancho */
+  }
+
+  /* --- ESTADO ACTIVE (Al hacer click) --- */
+  .hero .hero-button:active {
+    transform: translateY(-1px); /* Pequeño feedback táctil al presionarlo */
+    box-shadow: 0 8px 15px rgba(23, 23, 23, 0.2);
+  }
+
+/* Estado inicial: oculto y desplazado */
+  .reveal-section {
+    opacity: 0;
+    transform: translateY(50px); /* Empuja la sección 50px hacia abajo */
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+                transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: opacity, transform; /* Alerta al navegador para optimizar el rendimiento */
+  }
+
+  /* Estado activo: cuando se visualiza en pantalla */
+  .reveal-section.visible {
+    opacity: 1;
+    transform: translateY(0); /* Sube suavemente a su posición original */
+  }
+
+/*ICONOS*/
+  .iconos {
+    display: flex;
+  background:#FFFFFF; /* Fondo blanco liso */
+  width: 100%;
+  padding: 60px 70px; /* Padding vertical y horizontal equilibrado */
+  justify-content: space-between; /* Distribuye uniformemente los 4 bloques */
+  align-items: flex-start;
+  text-align: center;
+  box-sizing: border-box;
+  }
+
+  .icono-cont {
+    width: 22%; /* Espacio ideal para 4 columnas */
+    transition: transform 0.3s ease; /* Transición suave para interactividad */
+  }
+
+  /* Efecto hover moderno y limpio que reemplaza al 'zoom' */
+  .icono-cont:hover {
+    transform: translateY(-5px); 
+  }
+
+  .icono-cont img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 24px;
+  }
+
+  .icono-cont h3 {
+    margin: 0 0 10px 0;
+    color: #171717; 
+    font-family: "Archivo", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .icono-cont p {
+    margin: 0;
+    color: #666666; /* Gris intermedio y suave para las descripciones */
+    font-family: "Archivo", sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+    }
+
+/*CARACTERISTICAS BASICAS*/
+   .caracte {
+  position: relative;
+  background: url("../img/fondo-2.png") center right / cover no-repeat;
+  padding: 80px 70px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  }
+
+  .caracte-header h2 {
+    margin: 0 0 12px;
+    color: #171717;
+    font-family: "Montserrat", sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  .caracte-header p {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    color: #666666;
+    font-family: "Archivo", sans-serif;
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  /* --- CONTENEDOR DE LA BICICLETA --- */
+  .interactive-bike-container {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto 60px;
+  display: block; 
+  }
+
+  /* NUEVO WRAPPER: Mantiene los puntos fijos sobre la imagen en Desktop */
+  .bike-visual-wrapper {
+    position: relative;
+    display: inline-block; /* O 'block' si ocupa el 100% en móvil */
+    width: 100%;           /* Obliga al contenedor a medir lo mismo que la imagen */
+    max-width: 450px;
+  }
+
+  .bike-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: opacity 0.15s ease;
+  }
+
+  /* --- PUNTOS INTERACTIVOS (HOTSPOTS) --- */
+  .hotspot {
+    position: absolute;
+    z-index: 100;
+    cursor: pointer;
+  }
+
+  /* El círculo verde agua titilante/interactivo */
+  .hotspot .circle {
+    width: 16px;
+    height: 16px;
+    background-color: #00c4a7;
+    border: 2px solid #1a1a1a;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 196, 167, 0.6);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+
+  /* Animación sutil de respiración en el punto */
+  .hotspot:hover .circle {
+    transform: scale(1.3);
+    background-color: #00b096;
+  }
+
+  /* --- VENTANA EMERGENTE (POP-UP) --- */
+  .hotspot .pop-up {
+    position: absolute;
+    width: 280px;
+    background: #B5EBE2; /* Color crema pálido idéntico al de tu referencia */
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    text-align: left;
+    
+    /* Comportamiento oculto inicial */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    z-index: 20;
+  }
+
+  /* Mostrar el pop-up al hacer hover en el hotspot */
+  .hotspot:hover .pop-up {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Tipografías del Pop-up */
+  .pop-up h4 {
+    margin: 0 0 8px 0;
+    color: #000000;
+    font-family: "Archivo", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .pop-up p {
+    margin: 0;
+    color: #4a4a4a;
+    font-family: "Archivo", sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  /* --- DIRECCIONES DE LOS POPUPS --- */
+  /* Derecha */
+  .pop-right {
+    top: 10%;
+    left: 180px;
+    transform: translateY(-50%) translateX(10px);
+  }
+  .hotspot:hover .pop-right { transform: translateY(-50%) translateX(0); }
+
+  /* Izquierda */
+  .pop-left {
+    top: 10%;
+    right: 120px;
+    transform: translateY(-50%) translateX(-10px);
+  }
+  .hotspot:hover .pop-left { transform: translateY(-50%) translateX(0); }
+
+  .pop-left-2 {
+    top: 10%;
+    right: 180px;
+    transform: translateY(-50%) translateX(-10px);
+  }
+  .hotspot:hover .pop-left-2 { transform: translateY(-50%) translateX(0); }
+
+  /* --- SELECTOR DE COLORES --- */
+  .color-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px; /* Espaciado entre círculos */
+    margin: 20px 0 16px 0;
+  }
+
+  .color-btn {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+   border: 1px solid rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    padding: 0;
+    box-sizing: border-box;
+    filter: none !important;       /* Quita cualquier filtro heredado */
+    opacity: 1 !important;          /* Fuerza opacidad completa */
+    box-shadow: none !important;
+    -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .color-btn:hover {
+    transform: scale(1.15);
+  }
+
+  .color-btn.active {
+    transform: scale(1.2);
+  }
+
+  .pop-up-content {
+    display: block !important;
+  }
+
+  .mobile-accordion-group{
+    display: none;
+  }
+
+/*PLEGADO*/
+ .plegado {
+  background: url("../img/fondo-3.png") center center / cover no-repeat;
+  width: 100%;
+  padding: 80px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  box-sizing: border-box;
+  }
+
+  .plegado-texto {
+    width: 45%;
+  }
+
+  .plegado-texto h2 {
+    margin: 0 0 16px;
+    color: #171717;
+    font-family: "Montserrat", sans-serif;
+    font-size: 36px;
+    line-height: 1.2;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  .plegado-texto p {
+    margin: 0;
+    max-width: 460px;
+    color: #666666;
+    font-family: "Archivo", sans-serif;
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  /* --- CONTENEDOR DEL VIDEO --- */
+  .plegado-video {
+    position: relative;
+    width: 55%;
+    max-width: 540px;
+    height: 340px;
+    border-radius: 24px; /* Esquinas muy redondeadas como la imagen */
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    background: #000; /* Fondo negro de respaldo para el reproductor */
+  }
+
+  .plegado-video:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.18);
+  }
+
+  .video-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .plegado-video iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+
+  .play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #00c4a7;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    z-index: 2;
+  }
+
+  .play-icon {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 16px;
+    border-color: transparent transparent transparent #171717;
+    margin-left: 4px;
+  }
+
+  .plegado-video:hover .play-btn {
+    transform: translate(-50%, -50%) scale(1.1);
+    background-color: #00b096;
+  }
+
+/*GALERIA*/
+  .galeria { 
+    background: url("../img/fondo-2.png") top center / cover no-repeat; 
+    padding: 80px 0; 
+    width: 100%; 
+    box-sizing: border-box;
+  } 
+
+  .galeria-header { 
+    text-align: center; 
+    margin-bottom: 40px; 
+    padding: 0 20px; 
+  } 
+
+  .galeria-header h2 { 
+    margin: 0 0 16px; 
+    color: #1A1A1A; 
+    font: 800 36px/1.2 "Montserrat", sans-serif; 
+    text-transform: uppercase; 
+    letter-spacing: -0.5px; 
+  } 
+
+  .galeria-header p { 
+    margin: 0; 
+    color: #666666; 
+    font: 500 18px/1.4 "Archivo", sans-serif; 
+  } 
+
+  .galeria-wrapper { 
+    position: relative; 
+    max-width: 1120px; 
+    width: 90%;               
+    margin: 0 auto;    
+  } 
+
+  .galeria-carrusel { 
+    display: flex; 
+    gap: 24px; 
+    overflow-x: auto; 
+    scroll-snap-type: x mandatory; 
+    scroll-behavior: smooth; 
+    cursor: grab; 
+    user-select: none; 
+    scrollbar-width: none;  
+    padding: 10px 4px; 
+    width: 100%;
+    box-sizing: border-box;
+  } 
+
+  .galeria-carrusel::-webkit-scrollbar { 
+    display: none; 
+  } 
+
+  .galeria-card { 
+    flex: 0 0 400px; 
+    scroll-snap-align: start; 
+    box-sizing: border-box; 
+  } 
+
+  .galeria-img { 
+    position: relative; 
+    width: 100%; 
+    height: 480px;  
+    border-radius: 28px; 
+    overflow: hidden;    
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.07); 
+  } 
+
+  .galeria-img::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 35%; 
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .galeria-img img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    display: block; 
+    pointer-events: none; 
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
+  } 
+
+  .galeria-card:hover .galeria-img img { 
+    transform: scale(1.03); 
+  } 
+
+  .galeria-info {
+    position: absolute;
+    top: 32px;
+    left: 0;
+    width: 100%;
+    padding: 0 32px;
+    box-sizing: border-box;
+    text-align: center;
+    z-index: 2; 
+  }
+
+  .galeria-info h3 {
+    margin: 0;
+    color: #FFFFFF;
+    font-family: "Archivo", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  }
+
+  /* --- BOTONES DE NAVEGACIÓN --- */
+  .btn-carrusel { 
+    position: absolute; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    width: 52px; 
+    height: 52px; 
+    background-color: rgba(238, 238, 238, 0.9); 
+    border: none; 
+    border-radius: 50%; 
+    cursor: pointer; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+    z-index: 10; 
+    transition: all 0.2s ease; 
+  } 
+
+  .btn-izq { 
+    left: -20px;  
+  } 
+
+  .btn-der { 
+    right: -20px; 
+  } 
+
+  .btn-carrusel:hover { 
+    background-color: #FFFFFF;
+    transform: translateY(-50%) scale(1.05); 
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  } 
+
+  .arrow-icon { 
+    display: block; 
+    width: 10px; 
+    height: 10px; 
+    border-top: 3px solid #333333; 
+    border-right: 3px solid #333333; 
+  } 
+
+  .arrow-icon.left { 
+    transform: rotate(-135deg); 
+    margin-left: 4px; 
+  } 
+
+  .arrow-icon.right { 
+    transform: rotate(45deg); 
+    margin-right: 4px; 
+  }
+
+/*ACCS*/
+  .accs {
+  padding: 80px 70px;
+  height: 100%;
+  background: url("../img/fondo-3.png") center center / cover no-repeat;
+  width: 100%;
+  box-sizing: border-box;
+  }
+
+  /* --- ENCABEZADO --- */
+  .accs-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .accs-header h2 {
+    margin: 0 0 16px;
+    color: #1A1A1A;
+    font: 800 36px/1.2 "Montserrat", sans-serif;
+    text-transform: uppercase;
+  }
+
+  .accs-header p {
+    margin: 0;
+    color: #666666;
+    font: 500 18px/1.4 "Archivo", sans-serif;
+  }
+
+  /* --- GRILLA / LISTA DE TARJETAS --- */
+  .accs-lista {
+    display: flex;
+    justify-content: center;
+    gap: 24px; /* Espaciado idéntico entre las 4 tarjetas */
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    flex-wrap: wrap; /* Permite que bajen en pantallas chicas */
+  }
+
+  /* --- TARJETA (CARD) --- */
+  .accs-card {
+    flex: 1 1 calc(25% - 18px); /* Distribuye 4 columnas perfectas en PC */
+    min-width: 250px; /* Evita que se colapsen demasiado */
+    max-width: 285px;
+    border-radius: 20px; /* Bordes redondeados sutiles como la foto */
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); /* Sombra difuminada suave */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* Efecto opcional interactivo al pasar el cursor */
+  .accs-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(95, 199, 190, 0.2);
+  }
+
+  /* --- CONTENEDOR DE LA IMAGEN --- */
+  .accs-card img {
+    width: 100%;
+    height: 240px; /* Altura ideal fija para que todas queden alineadas */
+    object-fit: cover;
+    background-color: #f5f5f5; /* El gris claro de fondo que destaca el producto */
+    display: block;
+  }
+
+  /* --- BLOQUE DE TEXTO INTERNO --- */
+  .accs-card-texto {
+    padding: 24px 20px; /* Generoso espacio interior */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Empuja el contenido equitativamente */
+    text-align: left;
+  }
+
+  .accs-card-texto h3 {
+    margin: 0 0 10px 0;
+    color: #1A1A1A;
+    font: 800 18px/1.2 "Archivo", sans-serif;
+  }
+
+  .accs-card-texto p {
+    margin: 0;
+    color: #666666;
+    font: 500 14px/1.4 "Archivo", sans-serif;
+  }
+
+  /* --- OCULTAR EL BOTÓN PLUS (+) --- */
+  /* Como la imagen de diseño no lleva este botón, lo removemos limpiamente */
+  .accs-card .plus-btn {
+    display: none;
+  }
+
+/*FOOTER*/
+   .footer {
+    width: 100%;
+    height: auto;
+    padding: 80px 72px 24px; /* Más espacio arriba y abajo para igualar la imagen */
+    background-color: #1c1c1c; /* El tono de gris oscuro exacto del diseño */
+    box-sizing: border-box;
+  }
+
+  /* --- GRILLA PRINCIPAL --- */
+  .footer-links {
+    display: grid;
+    /* Creamos 3 columnas asimétricas (la primera es más ancha para el texto) */
+    grid-template-columns: 1.5fr 1fr 1fr; 
+    gap: 60px; 
+    margin-bottom: 60px; /* Espacio limpio antes de llegar a las redes */
+  }
+
+  /* --- COLUMNA DE MARCA (Columna 1) --- */
+  .footer-brand-col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .logo-footer {
+    width: 80px; /* Tamaño sutilmente más grande como el de tu foto */
+    height: auto;
+    display: block;
+    filter: brightness(0) invert(1); 
+  }
+
+  .brand-text {
+    margin: 0;
+    color: #cccccc;
+    font-family: "Archivo", Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    max-width: 280px; /* Limita el ancho del texto para que quiebre elegante */
+  }
+
+  /* --- COLUMNAS DE ENLACES Y TEXTOS (Columnas 2 y 3) --- */
+  .footer-col {
+    display: flex;
+    flex-direction: column; 
+    gap: 14px; /* Separación vertical exacta entre textos */
+  }
+
+  .footer-col h3 {
+    margin: 0 0 6px 0;
+    color: #888888; /* Un gris más apagado para los títulos al estilo Apple */
+    font-family: "Archivo", Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  /* Estilo unificado para los enlaces y textos planos de datos */
+  .footer-col a,
+  .contact-item {
+    margin: 0;
+    color: #e5e5e5; /* Blanco sutilmente grisáceo limpio */
+    font-family: "Archivo", Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-col a:hover {
+    color: #ffffff; /* Brilla al pasar el cursor */
+  }
+
+  /* --- SECCIÓN INFERIOR (REDES SOCIALES) --- */
+  .footer-bottom {
+    display: flex;
+    justify-content: flex-start; /* Alinea los iconos totalmente a la izquierda */
+    align-items: center;
+  }
+
+  .footer-redes {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .footer-redes a {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    background-color: rgba(255, 255, 255, 0.06); /* Círculo gris traslúcido idéntico a tu referencia */
+    border-radius: 50%;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .footer-redes a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: scale(1.05);
+  }
+
+  .footer-redes img {
+    width: 16px; /* Iconos internos compactos y nítidos */
+    height: 16px;
+    display: block;
+    /* Si tus SVG de redes son negros por defecto, este filtro los vuelve completamente blancos */
+    filter: brightness(0) invert(1); 
+  }
+
+/*RESPONSIVE*/
+
+/*Header*/
+   @media (max-width: 768px) {
+    .version .header {
+      padding: 0 24px; /* Reducimos los márgenes laterales */
+      background-color: transparent; /* Fondo transparente inicial */
+      box-shadow: none;
+    }
+
+    /* Ocultamos la barra de enlaces horizontal de escritorio */
+    .version .buttons-group {
+      display: none;
+    }
+
+    /* Activamos y estilizamos el botón hamburguesa de tu imagen */
+    .version .hamburger-btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 32px;
+      height: 20px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 1001;
+    }
+
+    /* Las 3 líneas del botón hamburguesa */
+    .version .hamburger-btn span {
+      width: 100%;
+      height: 3px;
+      background-color: #1A1A1A; /* Negro puro como en la foto */
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+/*Hero*/
+ @media (max-width: 768px) {
+  .hero {
+    min-height: 850px;
+    padding: 120px 24px 0 24px; 
+    display: flex;
+    flex-direction: column;      
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;       /* Centramos los textos */
+    background-color: #EFF1F0;
+    /* Ajustes para que la bicicleta se centre abajo como fondo */
+    background-size: 320%; /* Hacemos un zoom gigante a la imagen para agrandar la bici */
+    background-position: 100% 110%; /* 65% centra la bici horizontalmente y 30% la sube para recortar las ruedas */
+    background-repeat: no-repeat;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero h1 {
+    font-size: 38px;           /* Tamaño ideal y compacto para pantallas chicas */
+    line-height: 1.15;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+  }
+
+  .hero p {
+    font-size: 16px;           /* Texto descriptivo limpio y legible */
+    line-height: 1.5;
+    color: #656565;
+    max-width: 300px;          /* Restringimos el ancho del texto para que quiebre elegante */
+    margin-bottom: 0;          /* Eliminamos márgenes inferiores excedentes */
+    }
+
+    /* Según tu imagen de referencia, el botón verde no está en esta vista */
+    .hero .hero-button {
+      display: none;
+    }
+  }
+
+/*Iconos*/
+  @media (max-width: 768px) {
+    .iconos {
+      /* Reducimos el padding lateral para que las tarjetas se asomen por los bordes */
+      padding: 60px 20px; 
+      
+      /* 1. Transformamos la sección en el riel del carrusel */
+      justify-content: flex-start; /* Alinea los elementos al inicio */
+      flex-wrap: nowrap;           /* OBLIGATORIO: Evita que bajen a una segunda fila */
+      overflow-x: auto;            /* OBLIGATORIO: Activa el scroll horizontal táctil */
+      scroll-snap-type: x mandatory; /* Hace que se "imanten" perfectamente al deslizar */
+      scrollbar-width: none;       /* Oculta la barra de scroll en Firefox */
+      
+      width: 100%;
+      box-sizing: border-box;
+      gap: 20px;                   /* Separación horizontal entre los iconos del carrusel */
+    }
+
+    /* Oculta la barra de scroll en Chrome, Safari y Edge */
+    .iconos::-webkit-scrollbar {
+      display: none;
+    }
+
+    .icono-cont {
+      /* 2. Ajustamos los bloques para el modo carrusel */
+      /* Cada bloque ocupará el 70% de la pantalla para dejar ver que hay más contenido al lado */
+      flex: 0 0 70%;  
+      width: 70%;
+      max-width: 70%;
+      min-width: 240px; /* Evita que se colapsen en pantallas extremadamente pequeñas */
+      
+      scroll-snap-align: center; /* Centra el icono en pantalla al soltar el dedo */
+      padding: 0 10px; 
+      box-sizing: border-box;
+    }
+
+    /* El resto de tus estilos optimizados para mobile se mantienen limpios */
+    .icono-cont img {
+      width: 44px; 
+      height: 44px;
+      margin-bottom: 16px;
+    }
+
+    .icono-cont h3 {
+      font-size: 18px; 
+      margin-bottom: 8px;
+    }
+
+    .icono-cont p {
+      font-size: 14px; 
+      line-height: 1.3;
+      color: #666666;
+    }
+  }
+
+/*Cacteristicas básicas*/
+  @media (max-width: 768px) {
+    .caracte {
+      padding: 60px 24px;
+    }
+
+    .caracte-header h2 { font-size: 28px; line-height: 1.2; }
+    .caracte-header p { font-size: 15px; margin-bottom: 30px; }
+
+    .interactive-bike-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .bike-visual-wrapper {
+      position: relative;
+      display: inline-block; /* O 'block' si ocupa el 100% en móvil */
+      width: 100%;           /* Obliga al contenedor a medir lo mismo que la imagen */
+      max-width: 450px;
+    }
+
+    /* MATAMOS LOS POPUPS FLOTANTES EN MÓVIL */
+    .hotspot .pop-up {
+      display: none !important; 
+    }
+
+    /* ESTILOS DE CÍRCULOS MÓVILES (Sincronizados) */
+    .hotspot .circle {
+      width: 10px;
+      height: 10px;
+      background-color: #a0a0a0; /* Apagado por defecto */
+      border: 2px solid #ffffff;
+      box-shadow: none;
+    }
+
+    /* Círculo activo iluminado en la bicicleta */
+    .hotspot.active-feature .circle {
+      transform: scale(1.5);
+      background-color: #00c4a7;
+      box-shadow: 0 0 12px rgba(0, 196, 167, 0.8);
+      border-color: #1a1a1a;
+    }
+
+    /* ACTIVAR EL ACORDEÓN EN CELULARES */
+    .mobile-accordion-group {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      text-align: left;
+      margin-top: 10px;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid rgba(0, 196, 167, 0.3);
+      width: 100%;
+    }
+
+    .accordion-trigger {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 0;
+      cursor: pointer;
+    }
+
+    .accordion-item h4 {
+      font-family: "Archivo", sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #171717;
+      margin: 0;
+    }
+
+    /* ICONO DINÁMICO (+ / -) */
+    .accordion-icon {
+      display: block;
+      position: relative;
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+    .accordion-icon::before,
+    .accordion-icon::after {
+      content: "";
+      position: absolute;
+      background-color: #00c4a7;
+      transition: transform 0.3s ease;
+    }
+    .accordion-icon::before { top: 7px; left: 0; width: 16px; height: 2px; }
+    .accordion-icon::after { top: 0; left: 7px; width: 2px; height: 16px; }
+
+    /* Cambia de más (+) a menos (-) si está activo */
+    .accordion-item.active-feature .accordion-icon::after {
+      transform: scaleY(0);
+    }
+
+    /* CONTENIDO DESPLEGABLE CON ANIMACIÓN */
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out, padding-bottom 0.3s ease;
+      padding: 0 0 0 32px;
+    }
+
+    .accordion-item.active-feature .accordion-content {
+      max-height: 120px;
+      padding-bottom: 16px;
+    }
+
+    .accordion-content p {
+      font-family: "Archivo", sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #666666;
+      margin: 0;
+    }
+  }
+
+/*Plegado*/
+  @media (max-width: 768px) {
+  .plegado {
+    flex-direction: column;
+    padding: 36px 24px;
+    gap: 36px;
+    padding-bottom: 36px;
+    text-align: center;
+  }
+
+  .plegado-texto {
+    width: 100%;
+  }
+
+  .plegado-texto h2 {
+    font-size: 26px;
+  }
+
+  .plegado-texto p {
+    margin: 0 auto;
+    font-size: 16px;
+  }
+
+  .plegado-video {
+    width: 100%;
+    max-width: 100%;
+    height: 240px; /* Proporción ideal en móviles */
+    border-radius: 16px;
+  }
+  }
+
+/*Galeria*/
+  @media (max-width: 768px) {
+    .galeria-card {
+      flex: 0 0 290px; /* Más angostas en celular para mantener la proporción */
+    }
+    .galeria-img {
+      height: 400px;
+    }
+    .btn-carrusel {
+      display: none; /* En móvil el scroll se hace deslizando con el dedo */
+    }
+    .galeria-header h2{
+       font-size: 26px;
+    }
+    .galeria-header p{
+       font-size: 15px;
+    br {
+      display: none; /* Evitamos saltos de línea raros en móviles */
+    }
+    }
+
+   
+  }
+
+/*Accesorios*/
+  @media (max-width: 768px) {
+    .accs {
+      /* Reducimos el padding lateral para ganar espacio en pantallas chicas */
+      padding: 60px 20px; 
+    }
+
+    /* 1. Transformamos la lista en el riel del carrusel */
+    .accs-lista {
+      justify-content: flex-start; /* Alinea las tarjetas al inicio */
+      flex-wrap: nowrap;           /* OBLIGATORIO: Evita que las tarjetas bajen */
+      overflow-x: auto;            /* OBLIGATORIO: Activa el scroll horizontal táctil */
+      scroll-snap-type: x mandatory; /* Hace que las tarjetas se "imanten" al deslizar */
+      scrollbar-width: none;       /* Oculta la barra de scroll en Firefox */
+      padding-bottom: 20px;        /* Espacio para que no se corte la sombra inferior */
+      
+      /* Aseguramos que ocupe todo el ancho disponible */
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Oculta la barra de scroll en Chrome, Safari y Edge */
+    .accs-lista::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* 2. Ajustamos las tarjetas para el modo carrusel */
+    .accs-card {
+      /* OBLIGATORIO: Desactivamos el cálculo de columnas de PC y fijamos un ancho premium */
+      flex: 0 0 260px; 
+      max-width: 260px;
+      min-width: 260px;
+      
+      scroll-snap-align: start; /* Punto de anclaje para el efecto "imán" */
+    }
+    
+    .accs-card img {
+      height: 200px; /* Reducimos sutilmente la altura de la imagen en móvil */
+    }
+    .accs-header h2 {
+    font-size: 26px;
+    padding: 0 26px 0 26px; /* Ajustamos el título principal */
+  }
+
+  .accs-header p {
+    font-size: 15px;
+    padding: 0 26px 0 26px;
+    br {
+      display: none; /* Evitamos saltos de línea raros en móviles */
+    }
+  }
+  }
+
+/*Footer*/
+  @media (max-width: 768px) {
+    .footer {
+      padding: 50px 24px 40px;
+    }
+    
+    .footer-links {
+      grid-template-columns: 1fr; /* Pasa a una sola columna en móviles */
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-col {
+    align-items: center;    /* Centra los links horizontalmente */
+    text-align: center;     /* Centra el texto en sí */
+    }
+
+    /* 2. Centramos el logo y el bloque de texto de la marca */
+    .footer-brand-col {
+      align-items: center;    /* Centra el logo y el texto */
+      text-align: center;
+    }
+
+    .brand-text {
+      max-width: 100%;        /* Permite que use el ancho del celular de forma fluida */
+    }
+
+    /* 3. Centramos el contenedor de las redes sociales */
+    .footer-bottom {
+      justify-content: center; /* Mueve los círculos de las redes al medio */
+    }
+    .footer-redes img {
+      width: 35px; /* Ajusta este número (ej. 40px, 50px) según el tamaño que busques */
+      height: auto; /* Mantiene la proporción original para que no se deformen */
+    }
+    .footer-redes {
+      gap: 24px; /* Ajusta el espacio entre ellos (asumiendo que uses display: flex) */
+    }
+    .footer-redes a {
+      width: 55px;
+      height: 55px;
+    }
+  }

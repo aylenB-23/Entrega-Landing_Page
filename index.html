@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <title>Tern | Link B7 - viajar es más fácil</title>
+        <link rel="icon" type="image/svg+xml" href="icons/icono-pag.svg">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link href="css/styles.css" rel="stylesheet" />
+      </head>
+
+
+ 
+  <body>
+<!-- HEADER-->
+    <div class="version" >
+      <header class="header">
+        <img class="logo" src="icons/logo.svg" alt="Tern">
+
+        <nav class="buttons-group">
+          <a class="menu-item" href="#inicio">INICIO</a>
+          <a class="menu-item" href="#beneficios">Beneficios</a>
+          <a class="menu-item" href="#caracte">Características</a>
+          <a class="menu-item" href="#plegado">Plegado</a>
+          <a class="menu-item" href="#accesorios">Accesorios</a>
+        </nav>
+
+         <button class="hamburger-btn" type="button">
+           <span></span><span></span><span></span>
+         </button>
+      </header>
+
+      <div class="mobile-menu-overlay" id="mobileMenu">
+        <div class="menu-content">
+          <button class="close-btn" id="closeBtn">×</button>
+          <nav class="mobile-nav">
+            <a class="menu-item" href="#inicio">INICIO</a>
+            <a class="menu-item" href="#beneficios">Beneficios</a>
+            <a class="menu-item" href="#caracte">Características</a>
+            <a class="menu-item" href="#plegado">Plegado</a>
+            <a class="menu-item" href="#accesorios">Accesorios</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+<!-- HERO-->
+    <section class="hero" id="inicio">
+      <div class="hero-content">
+        <h1>Tu ciudad,<br>sin limites</h1>
+        <p>La bicicleta plegable que combina rendimiento, durabilidad y la libertad de llevarla a donde quieras.</p>
+
+        <a class="hero-button" href="#beneficios">
+          Descubre la Link B7
+        </a>
+      </div>
+    </section>
+
+<!-- ICONOS-->
+  <section class="iconos" id="beneficios">
+    
+      <div class="icono-cont">
+        <div class="reveal-section">
+          <img src="icons/road.svg" alt="Fácil transporte"> 
+          <h3>Fácil transporte</h3>
+          <p>Práctica para llegar a donde quieras</p>
+        </div>
+      </div>
+
+      <div class="icono-cont">
+        <div class="reveal-section">
+          <img src="icons/feather.svg" alt="Peso"> 
+          <h3>12,1 Kg</h3>
+          <p>Ligera, ágil y fácil de transportar</p>
+        </div>
+      </div>
+      
+      <div class="icono-cont">
+        <div class="reveal-section">
+          <img src="icons/clock.svg" alt="Tiempo"> 
+          <h3>10 segundos</h3>
+          <p>Plegado rápido y sencillo</p>
+        </div>
+      </div>
+
+      <div class="icono-cont">
+        <div class="reveal-section">
+          <img src="icons/gear.svg" alt="Calidad"> 
+          <h3>Calidad</h3>
+          <p>Componentes pensados para durar</p>
+        </div>
+      </div>
+    
+  </section>
+
+<!-- CARACTERISTICAS BASICAS-->
+ <section class="caracte" id="caracte">
+    <div class="reveal-section">
+      <div class="caracte-header">
+        <h2>Innovación que impulsa tu camino</h2>
+        <p>Cada componente ha sido seleccionado para ofrecer el equilibrio perfecto<br> entre durabilidad, bajo peso y agilidad urbana.</p>
+      </div>
+  </div>
+    <!-- Contenedor principal de la bicicleta interactiva -->
+
+    <div class="interactive-bike-container">
+
+        <img src="img/bici-azul-verde.png" id="bikeImage" class="bike-img" alt="Tern Link B7">
+
+        <!-- Punto 1: Manubrio / Altura -->
+        <div class="hotspot active-feature" data-target="feat-1" style="top: 22%; left: 58%;">
+          <div class="circle"></div>
+          <div class="pop-up pop-right">
+          <!-- El encabezado ahora tiene el icono interactivo para Mobile -->
+            <div class="accordion-trigger">
+              <span class="accordion-icon"></span>
+              <h4>Altura a medida</h4>
+            </div>
+            <div class="pop-up-content">
+              <p>El Telescopic Handlepost se sube o baja en segundos: más alto para ir cómodo, más bajo para mayor aerodinámica.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Punto 2: Cuadro / Plegado -->
+        <div class="hotspot" data-target="feat-2" style="top: 48%; left: 40%;">
+          <div class="circle"></div>
+          <div class="pop-up pop-left-2">
+            <div class="accordion-trigger">
+              <span class="accordion-icon"></span>
+              <h4>Cuadro de Aluminio</h4>
+            </div>
+            <div class="pop-up-content">
+              <p>Desarrollado en aluminio de alta resistencia mecánicamente, optimizado para soportar las exigencias diarias de la ciudad.</p>
+            </div>
+         </div>
+        </div>
+
+        <!-- Punto 3: Asiento / Poste -->
+        <div class="hotspot" data-target="feat-3" style="top: 35%; left: 59%;">
+          <div class="circle"></div>
+            <div class="pop-up pop-right">
+            <div class="accordion-trigger">
+              <span class="accordion-icon"></span>
+              <h4>Cierre magnético</h4>
+            </div>
+            <div class="pop-up-content">
+              <p>El sistema Q-Lock con AutoLock pliega el manubrio y lo asegura de manera automática, ofreciendo mayor practicidad.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Punto 4: Transmisión / Velocidades -->
+        <div class="hotspot" data-target="feat-4" style="top: 63%; left: 30%;">
+          <div class="circle"></div>
+          <div class="pop-up pop-left">
+            <div class="accordion-trigger">
+              <span class="accordion-icon"></span>
+              <h4>7 Velocidades</h4>
+            </div>
+            <div class="pop-up-content">
+            <p>Un sistema de cambios preciso y versátil, ideal para afrontar pendientes urbanas y llanos veloces sin esfuerzo extra.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="color-selector">
+      <button class="color-btn active" data-image="img/bici-azul-verde.png" style="background-color: #064E5B;"></button>
+      <button class="color-btn" data-image="img/bici-celeste.png" style="background-color: #99DBEA;"></button>
+      <button class="color-btn" data-image="img/bici-gris.png" style="background-color: #404040;"></button>
+      <button class="color-btn" data-image="img/bici-verde.png" style="background-color: #E9FF74;"></button>
+    </div>
+
+   <div class="mobile-accordion-group">
+      
+
+      <div class="accordion-item active-feature" id="feat-1">
+        <div class="accordion-trigger">
+          <span class="accordion-icon"></span>
+          <h4>Altura a medida</h4>
+        </div>
+        <div class="accordion-content">
+          <p>El Telescopic Handlepost se sube o baja en segundos: más alto para ir cómodo, más bajo para mayor aerodinámica.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item" id="feat-2">
+        <div class="accordion-trigger">
+          <span class="accordion-icon"></span>
+          <h4>Cuadro de Aluminio</h4>
+        </div>
+        <div class="accordion-content">
+          <p>Desarrollado en aluminio de alta resistencia mecánicamente, optimizado para soportar las exigencias diarias de la ciudad.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item" id="feat-3">
+        <div class="accordion-trigger">
+          <span class="accordion-icon"></span>
+          <h4>Cierre magnético</h4>
+        </div>
+        <div class="accordion-content">
+          <p>El sistema Q-Lock con AutoLock pliega el manubrio y lo asegura de manera automática, ofreciendo mayor practicidad.</p>
+        </div>
+      </div>
+
+
+      <div class="accordion-item" id="feat-4">
+        <div class="accordion-trigger">
+          <span class="accordion-icon"></span>
+          <h4>7 Velocidades</h4>
+        </div>
+        <div class="accordion-content">
+          <p>Un sistema de cambios preciso y versátil, ideal para afrontar pendientes urbanas y llanos veloces sin esfuerzo extra.</p>
+        </div>
+      </div>
+  </div>
+  </section>
+<!-- PLEGADO-->
+  <section class="plegado" id="plegado">
+      <div class="plegado-texto">
+          <div class="reveal-section">
+            <h2>Menos tiempo plegando,<br>más tiempo rodando</h2>
+            <p>Sin complicaciones, sin herramientas, solo un movimiento fluido para estar siempre listo.</p>
+          </div>
+      </div>
+
+      <!-- Contenedor del video interactivo -->
+      <div class="plegado-video" id="videoWrapper" data-video-id="video-tern">
+        <!-- Portada inicial del video -->
+        <img src="img/portada.jpg" alt="Demostración de plegado Tern" class="video-thumb" id="videoThumb">
+        
+        <!-- Botón de play turquesa -->
+        <div class="play-btn" id="playBtn">
+          <span class="play-icon"></span>
+        </div>
+      </div>
+  </section>
+
+<!-- GALERIA-->
+   <section class="galeria" id="galeria"> 
+    <div class="galeria-header"> 
+        <div class="reveal-section"> 
+          <h2>Diseñada para tu rutina, no al revés</h2> 
+          <p>Llevala al trabajo, subí al transporte público o guardala en tu departamento.</p> 
+        </div> 
+    </div> 
+
+    <div class="galeria-wrapper"> 
+      <button class="btn-carrusel btn-izq" id="btnIzq"> 
+        <span class="arrow-icon left"></span> 
+      </button> 
+
+      <div class="galeria-carrusel" id="carrusel"> 
+        <!-- TARJETA 1 -->
+        <article class="galeria-card"> 
+          <div class="galeria-img"> 
+            <div class="galeria-info">
+              <h3>En el subte</h3>
+            </div>
+            <img src="img/gale-01.png" alt="En el subte"> 
+          </div> 
+        </article> 
+
+        <!-- TARJETA 2 -->
+        <article class="galeria-card"> 
+          <div class="galeria-img"> 
+            <div class="galeria-info">
+              <h3>Guardada en la oficina</h3>
+            </div>
+            <img src="img/gale-02.png" alt="Guardada en la oficina"> 
+          </div> 
+        </article> 
+
+        <!-- TARJETA 3 -->
+        <article class="galeria-card"> 
+          <div class="galeria-img"> 
+            <div class="galeria-info">
+              <h3>Cómoda para guardar</h3>
+            </div>
+            <img src="img/gale-03.png" alt="Cómoda para guardar"> 
+          </div> 
+        </article> 
+
+        <!-- TARJETA 4 -->
+        <article class="galeria-card"> 
+          <div class="galeria-img"> 
+            <div class="galeria-info">
+              <h3>Fácil para viajar</h3>
+            </div>
+            <img src="img/gale-04.png" alt="Fácil de transportar"> 
+          </div> 
+        </article>    
+      </div> 
+
+      <button class="btn-carrusel btn-der" id="btnDer"> 
+        <span class="arrow-icon right"></span> 
+      </button> 
+    </div> 
+  </section>
+
+<!-- ACCESORIOS-->
+  <section class="accs" id="accesorios">
+      <div class="accs-header">
+        <div class="reveal-section">
+          <h2>TransfOrmala para tu rutina</h2>
+          <p>Personalizala con estos accesorios esenciales para el día a día</p>
+        </div>
+      </div>
+
+      <div class="accs-lista">
+        <article class="accs-card">
+          <img src="img/acc-01.png" alt="Junta de cuadro FBL 2">
+
+          <div class="accs-card-texto">
+            <h3>Rack Trasero</h3>
+            <p>Construido en aluminio con un sistema ultra-rigido.</p>
+          </div>
+        </article>
+
+        <article class="accs-card">
+          <img src="img/acc-02.png" alt="Tecnología DoubleTruss">
+
+          <div class="accs-card-texto">
+            <h3>Guardabarros</h3>
+            <p>Estos guardabarros te mantendrán a ti y a tu bicicleta secos y limpios.</p>
+          </div>
+        </article>
+
+        <article class="accs-card">
+          <img src="img/acc-03.png" alt="Telescopic Handlepost">
+
+          <div class="accs-card-texto">
+            <h3>Bolsa de Manillar</h3>
+            <p>Compacta para que lleves todo lo que va en el bolsillo.</p>
+          </div>
+        </article>
+
+        <article class="accs-card">
+          <img src="img/acc-04.png" alt="Telescopic Handlepost">
+
+          <div class="accs-card-texto">
+            <h3>Kontti Basket</h3>
+            <p>Se ajusta en tu portapaquetes trasero de manera rápida y fácil.</p>
+          </div>
+        </article>
+      </div>
+  </section>
+
+<!-- FOOTER-->
+  <footer class="footer">
+    <div class="footer-links">
+      <!-- Columna 1: Marca -->
+      <div class="footer-brand-col">
+        <img class="logo-footer" src="icons/logo.svg" alt="Tern">
+        <p class="brand-text">Bicicletas bien hechas que te hacen el día a día mucho más fácil.</p>
+      </div>
+
+      <!-- Columna 2: Contacto -->
+      <div class="footer-col">
+        <h3>Contacto</h3>
+        <p class="contact-item">Teléfono: +54 11 4583-0431</p>
+        <p class="contact-item">Email: info@Ternbicycle.com</p>
+        <p class="contact-item">Buenos Aires, Argentina</p>
+      </div>    
+
+      <!-- Columna 3: Menú -->
+      <div class="footer-col">
+        <h3>Menú</h3>
+        <a href="#inicio">Inicio</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#caracte">Características</a>
+        <a href="#plegado">Plegado</a>
+        <a href="#accesorios">Accesorios</a>
+      </div>
+    </div>
+
+    <!-- Contenedor inferior para las Redes -->
+    <div class="footer-bottom">
+      <div class="footer-redes">
+        <a href="https://www.youtube.com/user/ternbicycles" aria-label="YouTube">
+          <img src="icons/youtube.svg" alt="YouTube">
+        </a>
+        <a href="https://www.instagram.com/ternbicycles" aria-label="Instagram">
+          <img src="icons/instagram.svg" alt="Instagram">
+        </a>
+        <a href="https://www.facebook.com/ternbicycles" aria-label="Facebook">
+          <img src="icons/facebook.svg" alt="Facebook">
+        </a>
+      </div>
+    </div>
+  </footer>
+
+<!-- Scripts-->
+  <!-- Scroll modern -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+      const secciones = document.querySelectorAll(".reveal-section");
+
+      const opciones = {
+        root: null, // Usa la pantalla (viewport) como referencia
+        rootMargin: "0px 0px -60px 0px", // Margen inferior para retrasar un poquito el disparo y que se note el efecto
+        threshold: 0.10 // Se activa cuando el 15% de la sección es visible
+      };
+
+      const observador = new IntersectionObserver((entradas, observadorPropio) => {
+        entradas.forEach(entrada => {
+          if (entrada.isIntersecting) {
+            entrada.target.classList.add("visible");
+            // Apagamos el observador para esta sección para que la animación ocurra una sola vez
+            observadorPropio.unobserve(entrada.target);
+          }
+        });
+      }, opciones);
+
+      // Activamos el detector en cada sección
+      secciones.forEach(seccion => observador.observe(seccion));
+    });
+    </script>
+
+  <!-- Header color -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const header = document.querySelector(".version .header .buttons-group");
+        
+        // Buscamos tu sección Hero (cambia '#inicio' si tu sección principal tiene otro ID)
+        const heroSection = document.querySelector("#inicio"); 
+
+        if (header && heroSection) {
+          window.addEventListener("scroll", () => {
+            // Obtenemos la altura exacta que ocupa el Hero en pantalla
+            const heroHeight = heroSection.offsetHeight;
+            
+            // Si el scroll actual supera la altura del hero menos el alto del header
+            if (window.scrollY >= (heroHeight - 80)) {
+              header.classList.add("header-scrolled");
+            } else {
+              header.classList.remove("header-scrolled");
+            }
+          });
+        }
+      });
+    </script>
+
+  <!-- Subrayado -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+      // 1. Seleccionamos todos los enlaces tanto del menú Desktop como Mobile
+      const menuItems = document.querySelectorAll(".menu-item");
+      
+      // 2. Buscamos todas las secciones reales en tu HTML basadas en los href del menú
+      const sections = [];
+      menuItems.forEach(item => {
+        const hash = item.getAttribute("href");
+        if (hash && hash.startsWith("#")) {
+          const section = document.querySelector(hash);
+          if (section && !sections.includes(section)) {
+            sections.push(section);
+          }
+        }
+      });
+
+      // 3. Configuración del observador de intersección
+      const observerOptions = {
+        root: null, // Usa la pantalla (viewport) como referencia
+        rootMargin: "-80px 0px 0px 0px", // Descontamos los 80px del header para que sea exacto al entrar
+        threshold: 0.5 // Se activa cuando el 50% de la sección está visible
+      };
+
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          // Si la sección está cruzando y es la dominante en pantalla
+          if (entry.isIntersecting) {
+            const idSection = entry.target.getAttribute("id");
+
+            // Quitamos la clase activa a todos los botones primero
+            menuItems.forEach(item => item.classList.remove("active-menu"));
+
+            // Buscamos los enlaces (PC y móvil) que apunten a este ID y les agregamos la clase
+            const activeLinks = document.querySelectorAll(`.menu-item[href="#${idSection}"]`);
+            activeLinks.forEach(link => link.classList.add("active-menu"));
+          }
+        });
+      }, observerOptions);
+
+      // 4. Activamos el observador en cada una de tus secciones detectadas
+      sections.forEach(section => sectionObserver.observe(section));
+    });
+    </script>  
+
+  <!--menu-mobile -->
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const hamburgerBtn = document.querySelector(".hamburger-btn");
+      const closeBtn = document.getElementById("closeBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const mobileLinks = document.querySelectorAll(".mobile-nav .menu-item");
+
+      // Función para abrir el menú
+      hamburgerBtn.addEventListener("click", () => {
+        mobileMenu.classList.add("active");
+        document.body.style.overflow = "hidden"; // Evita que la página trasera se mueva
+      });
+
+      // Función para cerrar el menú
+      const closeMenu = () => {
+        mobileMenu.classList.remove("active");
+        document.body.style.overflow = ""; // Devuelve el scroll a la página
+      };
+
+      closeBtn.addEventListener("click", closeMenu);
+
+      // Cerrar automáticamente cuando el usuario toca un link del menú
+      mobileLinks.forEach(link => {
+        link.addEventListener("click", closeMenu);
+      });
+    });
+    </script>
+
+  <!-- Colores -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+      const colorButtons = document.querySelectorAll(".color-btn");
+      const bikeImage = document.getElementById("bikeImage");
+
+      colorButtons.forEach(button => {
+        button.addEventListener("click", () => {
+          // 1. Quitar la clase active del botón anterior
+          document.querySelector(".color-btn.active")?.classList.remove("active");
+          
+          // 2. Agregar la clase active al botón clickeado
+          button.classList.add("active");
+          
+          // 3. Cambiar el atributo src de la imagen de la bicicleta con una transición suave opcional
+          const newImagePath = button.getAttribute("data-image");
+          
+          bikeImage.style.opacity = "0";
+          setTimeout(() => {
+            bikeImage.src = newImagePath;
+            bikeImage.style.opacity = "1";
+          }, 150); // Pequeño parpadeo estético controlado para el cambio
+        });
+      });
+    });
+    </script>
+
+  <!-- Acordeon mobile -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const accordionItems = document.querySelectorAll(".accordion-item");
+        const hotspots = document.querySelectorAll(".hotspot");
+
+        // Activa el primer elemento de la lista por defecto en celulares
+        if (window.innerWidth <= 768 && hotspots.length > 0) {
+          hotspots[0].classList.add("active-feature");
+        }
+
+        // Lógica interactiva para el Acordeón Móvil
+        accordionItems.forEach((item) => {
+          const trigger = item.querySelector(".accordion-trigger");
+
+          trigger.addEventListener("click", () => {
+            if (window.innerWidth > 768) return; // Freno de seguridad para Desktop
+
+            const isAlreadyActive = item.classList.contains("active-feature");
+            const targetId = item.id;
+
+            // Apagamos todo lo activo
+            accordionItems.forEach(i => i.classList.remove("active-feature"));
+            hotspots.forEach(h => h.classList.remove("active-feature"));
+
+            // Encendemos el elemento y su punto correspondiente en la bici
+            if (!isAlreadyActive) {
+              item.classList.add("active-feature");
+              const matchingHotspot = document.querySelector(`.hotspot[data-target="${targetId}"]`);
+              if (matchingHotspot) {
+                matchingHotspot.classList.add("active-feature");
+              }
+            }
+          });
+        });
+
+        // Si tocan directamente los círculos en la bicicleta estando en móvil
+        hotspots.forEach((hotspot) => {
+          hotspot.addEventListener("click", () => {
+            if (window.innerWidth > 768) return; // Freno de seguridad para Desktop
+            
+            const targetId = hotspot.getAttribute("data-target");
+            const matchingAccordion = document.getElementById(targetId);
+            
+            if (matchingAccordion) {
+              const trigger = matchingAccordion.querySelector(".accordion-trigger");
+              trigger.click(); // Dispara la animación inferior
+            }
+          });
+        });
+      });
+    </script>
+
+  <!--video -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const videoWrapper = document.getElementById("videoWrapper");
+        
+        if (videoWrapper) {
+          videoWrapper.addEventListener("click", function() {
+            const videoId = this.getAttribute("data-video-id");
+            
+            // Creamos el iframe de YouTube con autoreproducción activada de forma limpia
+            const iframe = document.createElement("iframe");
+            iframe.setAttribute("src", `https://www.youtube.com/watch?v=BrvsVjMSE5Y`);
+            iframe.setAttribute("title", "YouTube video player");
+            iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
+            iframe.setAttribute("allowfullscreen", "true");
+            
+            // Limpiamos el contenedor (remueve la imagen y el botón play viejo)
+            this.innerHTML = "";
+            
+            // Insertamos el reproductor de YouTube directamente dentro del div con bordes redondeados
+            this.appendChild(iframe);
+          });
+        }
+      });
+    </script>
+
+  <!--Carrusel galeria -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+      const carrusel = document.getElementById("carrusel");
+      const btnIzq = document.getElementById("btnIzq");
+      const btnDer = document.getElementById("btnDer");
+
+      const scrollCarrusel = (direccion) => {
+        // 400px de tarjeta + 24px de gap = 424px por movimiento
+        const desplazamiento = 424; 
+        if (direccion === "derecha") {
+          carrusel.scrollLeft += desplazamiento;
+        } else {
+          carrusel.scrollLeft -= desplazamiento;
+        }
+      };
+
+      btnDer.addEventListener("click", () => scrollCarrusel("derecha"));
+      btnIzq.addEventListener("click", () => scrollCarrusel("izquierda"));
+    });
+    </script> 
+</body>
+</html>
