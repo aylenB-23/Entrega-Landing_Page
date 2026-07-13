@@ -689,8 +689,8 @@ body {
 
   .galeria-wrapper { 
     position: relative; 
-    max-width: 1120px; 
-    width: 90%;               
+    max-width: 1250px; 
+    width: 100%;               
     margin: 0 auto;    
   } 
 
@@ -724,7 +724,6 @@ body {
     height: 480px;  
     border-radius: 28px; 
     overflow: hidden;    
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.07); 
   } 
 
   .galeria-img::after {
@@ -733,8 +732,8 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 35%; 
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
+    height: 50%; /* Aumentado de 35% a 50% */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 100%);
     z-index: 1;
     pointer-events: none;
   }
@@ -780,7 +779,7 @@ body {
     transform: translateY(-50%); 
     width: 52px; 
     height: 52px; 
-    background-color: rgba(238, 238, 238, 0.9); 
+    background-color: rgba(217, 217, 217, 0.9); 
     border: none; 
     border-radius: 50%; 
     cursor: pointer; 
@@ -793,15 +792,15 @@ body {
   } 
 
   .btn-izq { 
-    left: -20px;  
+    left: -80px; /* En lugar de -20px para que no se salga de la pantalla */  
   } 
 
   .btn-der { 
-    right: -20px; 
-  } 
+    right: -80px; /* Ajustado para que quede encima de las tarjetas como en la foto */ 
+  }
 
   .btn-carrusel:hover { 
-    background-color: #FFFFFF;
+    background-color: #D9D9D9;
     transform: translateY(-50%) scale(1.05); 
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
   } 
@@ -1316,27 +1315,47 @@ body {
   }
 
 /*Galeria*/
-  @media (max-width: 768px) {
+   @media (max-width: 768px) {
     .galeria-card {
-      flex: 0 0 290px; /* Más angostas en celular para mantener la proporción */
+      flex: 0 0 290px;
+      /* Al cambiar el scroll-snap al inicio, se coordina con el padding del carrusel */
+      scroll-snap-align: start; 
     }
+
+    .galeria-carrusel {
+      /* Cambiamos margins por padding para que el contenido fluya hasta el borde al scrollear */
+      padding-left: 26px;
+      padding-right: 26px;
+      
+      /* ESTO ES CLAVE: Hace que la tarjeta se detenga exactamente donde termina el padding */
+      scroll-padding-left: 26px; 
+      
+      /* Nos aseguramos de que el ancho no rompa el layout */
+      width: 100%;
+      box-sizing: border-box;
+    }
+
     .galeria-img {
       height: 400px;
     }
+
     .btn-carrusel {
       display: none; /* En móvil el scroll se hace deslizando con el dedo */
     }
-    .galeria-header h2{
-       font-size: 26px;
-    }
-    .galeria-header p{
-       font-size: 15px;
-    br {
-      display: none; /* Evitamos saltos de línea raros en móviles */
-    }
+
+    .galeria-header h2 {
+      font-size: 26px;
     }
 
-   
+    /* Corregido: Se cerró la llave correctamente aquí */
+    .galeria-header p {
+      font-size: 15px;
+    }
+
+    /* Corregido: El selector 'br' va fuera del párrafo */
+    .galeria-header p br {
+      display: none; /* Evitamos saltos de línea raros en móviles */
+    }
   }
 
 /*Accesorios*/
